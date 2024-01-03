@@ -1,5 +1,10 @@
 FROM php:8.1-fpm
 
+# Install system dependencies for NodeJS
+RUN apt-get update && apt-get install -y curl gnupg ca-certificates lsb-release
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt-get install -y nodejs
+
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
